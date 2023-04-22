@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { ReactiveFormsModule } from '@angular/forms'
 import { MatButtonModule } from '@angular/material/button'
+import { MatCheckboxModule } from '@angular/material/checkbox'
 
 @NgModule({
   declarations: [LoginComponent],
@@ -16,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button'
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatCheckboxModule,
   ],
 })
 export class AuthModule {}
