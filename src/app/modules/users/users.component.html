@@ -1,1 +1,21 @@
-<p>users works!</p>
+<section class="users">
+  <mat-card>
+    <img mat-card-image src="" alt="User Avatar" />
+    <mat-card-content>
+      <p>John Doe</p>
+      <p>john.doe@example.com</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary">Follow</button>
+    </mat-card-actions>
+  </mat-card>
+  <div class="users__footer">
+    <mat-paginator
+      [length]="100"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </div>
+</section>

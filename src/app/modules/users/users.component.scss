@@ -1,0 +1,35 @@
+.users {
+ display: flex;
+ height: 100%;
+ flex-direction: column;
+ justify-content: space-between;
+ padding: 15px 15px 0;
+ border: 1px solid red;
+
+ &__footer {
+  border: 2px solid green;
+  display: inline-block;
+  height: 100px;
+ }
+}
+
+.mdc-card {
+ align-items: center;
+ flex-direction: row;
+ justify-content: space-between;
+}
+
+
+.mat-mdc-card {
+ padding: 10px;
+ }
+
+.mat-mdc-card-content {
+ display: flex;
+
+ & p {
+  &:last-child {
+   margin-left: 15px;
+  }
+ }
+}

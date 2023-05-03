@@ -1,12 +1,16 @@
-<mat-toolbar color="primary">
-  <span>My App</span>
-</mat-toolbar>
-<div class="main">
-  <div class="menu">
-    <mat-nav-list>
-      <a mat-list-item routerLink="/profile">Profile</a>
-      <a mat-list-item routerLink="/users">Users</a>
-    </mat-nav-list>
+<div class="page">
+  <mat-toolbar color="primary">
+    <span>My App</span>
+  </mat-toolbar>
+  <div class="main">
+    <div class="menu">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/profile">Profile</a>
+        <a mat-list-item routerLink="/users">Users</a>
+      </mat-nav-list>
+    </div>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-  <router-outlet></router-outlet>
 </div>

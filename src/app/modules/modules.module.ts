@@ -8,6 +8,9 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatListModule } from '@angular/material/list'
 import { MatMenuModule } from '@angular/material/menu'
+import { MatCardModule } from '@angular/material/card'
+import { MatButtonModule } from '@angular/material/button'
+import { MatPaginatorModule } from '@angular/material/paginator'
 
 @NgModule({
   declarations: [ProfileComponent, UsersComponent, ModulesComponent],
@@ -18,6 +21,9 @@ import { MatMenuModule } from '@angular/material/menu'
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
+    MatCardModule,
+    MatButtonModule,
+    MatPaginatorModule,
   ],
 })
 export class ModulesModule {}
