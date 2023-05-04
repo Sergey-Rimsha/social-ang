@@ -1,0 +1,23 @@
+<section class="users">
+  <ng-container *ngFor="let user of users$ | async">
+    <mat-card>
+      <img mat-card-image src="{{ user.photos.small }}" alt="User Avatar" />
+      <mat-card-content>
+        <p>{{ user.name }}</p>
+        <p>status:{{ user.status }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary">{{ user.followed }}</button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+  <div class="users__footer">
+    <mat-paginator
+      [length]="totalCount$ | async"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </div>
+</section>

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { ProfileComponent } from './profile/profile.component'
-import { UsersComponent } from './users/users.component'
 import { ModulesComponent } from './modules.component'
 
 const routes: Routes = [
@@ -11,7 +10,10 @@ const routes: Routes = [
     component: ModulesComponent,
     children: [
       { path: 'profile', component: ProfileComponent, pathMatch: 'full' },
-      { path: 'users', component: UsersComponent, pathMatch: 'full' },
+      {
+        path: 'users',
+        loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
+      },
     ],
   },
 ]
