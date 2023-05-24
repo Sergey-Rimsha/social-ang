@@ -13,6 +13,7 @@
   </ng-container>
   <div class="users__footer">
     <mat-paginator
+      (page)="onChangePagination($event)"
       [length]="totalCount$ | async"
       [pageSize]="10"
       [pageSizeOptions]="[5, 10, 25, 100]"

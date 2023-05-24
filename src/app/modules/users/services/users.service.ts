@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { environment } from '../../../../environments/environments'
 import { BehaviorSubject } from 'rxjs'
 
@@ -20,6 +20,13 @@ export interface User {
   followed: boolean
 }
 
+export interface getParams {
+  count?: number
+  page?: number
+  term?: string
+  friend?: boolean
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -30,14 +37,18 @@ export class UsersService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers() {
-    this.http.get<ResponseUsers>(`${environment.baseUrl}/users`).subscribe((res: ResponseUsers) => {
-      if (res.error) {
-        this.error$.next('some error')
-      } else {
-        this.users$.next(res.items)
-        this.totalCount$.next(res.totalCount)
-      }
-    })
+  getUsers(param: getParams) {
+    const params = new HttpParams().set('count', (param.count = 10)).set('page', (param.page = 1))
+    this.http
+      .get<ResponseUsers>(`${environment.baseUrl}/users`, { params })
+      .subscribe((res: ResponseUsers) => {
+        console.log(res)
+        if (res.error) {
+          this.error$.next('some error')
+        } else {
+          this.users$.next(res.items)
+          this.totalCount$.next(res.totalCount)
+        }
+      })
   }
 }
