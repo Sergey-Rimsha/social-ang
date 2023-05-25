@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { environment } from '../../../../environments/environments'
-import { BehaviorSubject } from 'rxjs'
+import { BehaviorSubject, map } from 'rxjs'
 
 export interface ResponseUsers {
   items: User[]
@@ -51,6 +51,40 @@ export class UsersService {
           this.users$.next(res.items)
           this.totalCount$.next(res.totalCount)
         }
+      })
+  }
+
+  followUser(userId: number) {
+    this.http
+      .post(`${environment.baseUrl}/follow/${userId}`, {})
+      .pipe(
+        map(() => {
+          const stateUsers = this.users$.getValue()
+          stateUsers.forEach(user => {
+            if (user.id === userId) user.followed = true
+          })
+          return stateUsers
+        })
+      )
+      .subscribe((users: User[]) => {
+        this.users$.next(users)
+      })
+  }
+  unfollowUser(userId: number) {
+    this.http
+      .delete(`${environment.baseUrl}/follow/${userId}`)
+
+      .pipe(
+        map(() => {
+          const stateUsers = this.users$.getValue()
+          stateUsers.forEach(user => {
+            if (user.id === userId) user.followed = false
+          })
+          return stateUsers
+        })
+      )
+      .subscribe((users: User[]) => {
+        this.users$.next(users)
       })
   }
 }

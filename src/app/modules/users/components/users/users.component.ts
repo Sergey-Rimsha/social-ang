@@ -26,6 +26,15 @@ export class UsersComponent implements OnInit {
     this.userService.getUsers(paramsPg)
   }
 
+  onFollowUser(userId: number) {
+    console.log('follow', userId)
+    this.userService.followUser(userId)
+  }
+
+  unfollowUser(userId: number) {
+    this.userService.unfollowUser(userId)
+  }
+
   ngOnInit() {
     this.userService.getUsers()
   }

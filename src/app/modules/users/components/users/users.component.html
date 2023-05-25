@@ -7,7 +7,12 @@
         <p>status:{{ user.status }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button color="primary">{{ user.followed }}</button>
+        <button *ngIf="user.followed" (click)="unfollowUser(user.id)" mat-button color="primary">
+          unfollow
+        </button>
+        <button *ngIf="!user.followed" (click)="onFollowUser(user.id)" mat-button color="accent">
+          follow
+        </button>
       </mat-card-actions>
     </mat-card>
   </ng-container>
