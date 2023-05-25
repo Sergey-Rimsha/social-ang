@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
-import { User, UsersService } from '../../services/users.service'
+import { UsersService } from '../../services/users.service'
 import { Observable } from 'rxjs'
 import { MatPaginator, PageEvent } from '@angular/material/paginator'
+import { User } from '../../interface/user'
 
 @Component({
   selector: 'soc-users',

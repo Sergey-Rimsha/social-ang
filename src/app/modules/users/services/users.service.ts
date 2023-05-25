@@ -2,32 +2,8 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { environment } from '../../../../environments/environments'
 import { BehaviorSubject, map } from 'rxjs'
-
-export interface ResponseUsers {
-  items: User[]
-  totalCount: number
-  error?: any
-}
-
-export interface UserPhotos {
-  small?: any
-  large?: any
-}
-
-export interface User {
-  name: string
-  id: number
-  photos: UserPhotos
-  status?: any
-  followed: boolean
-}
-
-export interface getParams {
-  count: number
-  page: number
-  term?: string
-  friend?: boolean
-}
+import { User } from '../interface/user'
+import { getParams, ResponseUsers } from '../interface/services'
 
 @Injectable({
   providedIn: 'root',
@@ -73,7 +49,6 @@ export class UsersService {
   unfollowUser(userId: number) {
     this.http
       .delete(`${environment.baseUrl}/follow/${userId}`)
-
       .pipe(
         map(() => {
           const stateUsers = this.users$.getValue()

@@ -1,7 +1,8 @@
 <section class="users">
   <ng-container *ngFor="let user of users$ | async">
     <mat-card>
-      <img mat-card-image src="{{ user.photos.small }}" alt="User Avatar" />
+      <!--      <img mat-card-image src="{{ user.photos.small }}" (error)="(avaDefault)" alt="User Avatar" />-->
+      <img mat-card-image src="assets/img/default.jpg" alt="User Avatar" />
       <mat-card-content>
         <p>{{ user.name }}</p>
         <p>status:{{ user.status }}</p>
