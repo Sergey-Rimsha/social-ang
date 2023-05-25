@@ -19,16 +19,14 @@ export class UsersComponent implements OnInit {
   }
 
   onChangePagination(event: PageEvent) {
-    const params = {
-      page: event.pageIndex,
+    const paramsPg = {
+      page: event.pageIndex + 1,
       count: event.pageSize,
     }
-
-    console.log(event)
-    this.userService.getUsers(params)
+    this.userService.getUsers(paramsPg)
   }
 
   ngOnInit() {
-    this.userService.getUsers({})
+    this.userService.getUsers()
   }
 }

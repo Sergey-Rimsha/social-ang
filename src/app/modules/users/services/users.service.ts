@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { HttpClient, HttpParams } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 import { environment } from '../../../../environments/environments'
 import { BehaviorSubject } from 'rxjs'
 
@@ -8,10 +8,12 @@ export interface ResponseUsers {
   totalCount: number
   error?: any
 }
+
 export interface UserPhotos {
   small?: any
   large?: any
 }
+
 export interface User {
   name: string
   id: number
@@ -21,8 +23,8 @@ export interface User {
 }
 
 export interface getParams {
-  count?: number
-  page?: number
+  count: number
+  page: number
   term?: string
   friend?: boolean
 }
@@ -32,17 +34,17 @@ export interface getParams {
 })
 export class UsersService {
   users$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([])
-  totalCount$ = new BehaviorSubject<number>(0)
-  error$ = new BehaviorSubject<null | string>(null)
+  totalCount$: BehaviorSubject<number> = new BehaviorSubject<number>(0)
+  error$: BehaviorSubject<null | string> = new BehaviorSubject<null | string>(null)
 
   constructor(private http: HttpClient) {}
 
-  getUsers(param: getParams) {
-    const params = new HttpParams().set('count', (param.count = 10)).set('page', (param.page = 1))
+  getUsers(pgParams?: getParams) {
+    let params = {}
+    if (pgParams) params = pgParams
     this.http
       .get<ResponseUsers>(`${environment.baseUrl}/users`, { params })
       .subscribe((res: ResponseUsers) => {
-        console.log(res)
         if (res.error) {
           this.error$.next('some error')
         } else {
