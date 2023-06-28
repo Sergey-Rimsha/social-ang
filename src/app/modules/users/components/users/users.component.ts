@@ -13,10 +13,12 @@ export class UsersComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator
   users$?: Observable<User[]>
   totalCount$: Observable<number>
+  imgDefault: string
 
   constructor(private userService: UsersService) {
     this.users$ = this.userService.users$
     this.totalCount$ = this.userService.totalCount$
+    this.imgDefault = 'assets/img/default.jpg'
   }
 
   onChangePagination(event: PageEvent) {

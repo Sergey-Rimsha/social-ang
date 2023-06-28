@@ -16,6 +16,11 @@
  flex-direction: row;
  justify-content: space-between;
  margin-bottom: 10px;
+
+  &__media {
+    width: 42px;
+    height: 42px;
+  }
 }
 
 
