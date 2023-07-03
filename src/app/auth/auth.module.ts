@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core'
-import { LoginComponent } from './components/login/login.component'
+import { LoginComponent } from './login/login.component'
 import { AuthRoutingModule } from './auth-routing.module'
 import { CommonModule } from '@angular/common'
 import { MatFormFieldModule } from '@angular/material/form-field'

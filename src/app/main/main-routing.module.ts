@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { ProfileComponent } from './profile/profile.component'
-import { ModulesComponent } from './modules.component'
+import { MainComponent } from './main.component'
+import { Path } from '../core/enums/path'
 
 const routes: Routes = [
-  { path: '', redirectTo: 'profile', pathMatch: 'full' },
+  { path: '', redirectTo: Path.profile, pathMatch: 'full' },
   {
     path: '',
-    component: ModulesComponent,
+    component: MainComponent,
     children: [
-      { path: 'profile', component: ProfileComponent, pathMatch: 'full' },
+      { path: Path.profile, component: ProfileComponent, pathMatch: 'full' },
       {
-        path: 'users',
+        path: Path.users,
         loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
       },
     ],
@@ -22,4 +23,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ModulesRoutingModule {}
+export class MainRoutingModule {}
