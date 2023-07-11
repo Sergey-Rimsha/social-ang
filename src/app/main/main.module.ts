@@ -8,9 +8,17 @@ import { MatListModule } from '@angular/material/list'
 import { MatButtonModule } from '@angular/material/button'
 import { HeaderComponent } from './components/header/header.component'
 import { MenuComponent } from './components/menu/menu.component'
+import { MatCardModule } from '@angular/material/card'
 
 @NgModule({
   declarations: [ProfileComponent, MainComponent, HeaderComponent, MenuComponent],
-  imports: [CommonModule, MainRoutingModule, MatToolbarModule, MatListModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    MainRoutingModule,
+    MatToolbarModule,
+    MatListModule,
+    MatButtonModule,
+    MatCardModule,
+  ],
 })
 export class MainModule {}

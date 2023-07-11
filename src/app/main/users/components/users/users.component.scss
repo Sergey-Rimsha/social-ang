@@ -29,10 +29,12 @@
 
 .mat-mdc-card-content {
  display: flex;
+ flex-direction: column;
+ width: 100%;
 
  & p {
-  &:last-child {
-   margin-left: 15px;
+  &:first-child {
+   font-size: 18px;
   }
  }
 }

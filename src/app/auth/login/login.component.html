@@ -1,57 +1,61 @@
 <div class="block">
-  <div class="block__title">Login form</div>
   <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" class="example-form">
-    <div class="block__item">
-      <mat-form-field class="example-full-width">
-        <mat-label>Email</mat-label>
-        <input
-          type="email"
-          required
-          formControlName="email"
-          matInput
-          placeholder="Ex. pat@example.com"
-        />
-        <mat-error
-          *ngIf="
-            loginForm.controls.email!.invalid &&
-            (loginForm.controls.email!.dirty || loginForm.controls.email!.touched)
-          "
-        >
-          <div *ngIf="loginForm.controls.email!.errors?.['required']">Email is required</div>
-          <div *ngIf="loginForm.controls.email!.errors?.['pattern']">Email incorrect pattern</div>
-        </mat-error>
-      </mat-form-field>
-    </div>
+    <div class="block__title">Login form</div>
+    <div class="block__content">
+      <div class="block__item">
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            required
+            formControlName="email"
+            matInput
+            placeholder="Ex. pat@example.com"
+          />
+          <mat-error
+            *ngIf="
+              loginForm.controls.email!.invalid &&
+              (loginForm.controls.email!.dirty || loginForm.controls.email!.touched)
+            "
+          >
+            <div *ngIf="loginForm.controls.email!.errors?.['required']">Email is required</div>
+            <div *ngIf="loginForm.controls.email!.errors?.['pattern']">Email incorrect pattern</div>
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-    <div class="block__item">
-      <mat-form-field class="example-full-width">
-        <mat-label>Password</mat-label>
-        <input
-          type="password"
-          required
-          formControlName="password"
-          matInput
-          placeholder="password"
-        />
-        <mat-error
-          *ngIf="
-            loginForm.controls.password!.invalid &&
-            (loginForm.controls.password!.dirty || loginForm.controls.password!.touched)
-          "
-          class="error"
-        >
-          <div *ngIf="loginForm.controls.password!.errors?.['required']">Password is required.</div>
-          <div *ngIf="loginForm.controls.password!.errors?.['minlength']">
-            Name must be at least 3 characters long.
-          </div>
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <div class="block__item">
-      <mat-checkbox formControlName="rememberMe" class="example-margin">remember me</mat-checkbox>
+      <div class="block__item">
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+          <input
+            type="password"
+            required
+            formControlName="password"
+            matInput
+            placeholder="password"
+          />
+          <mat-error
+            *ngIf="
+              loginForm.controls.password!.invalid &&
+              (loginForm.controls.password!.dirty || loginForm.controls.password!.touched)
+            "
+            class="error"
+          >
+            <div *ngIf="loginForm.controls.password!.errors?.['required']">
+              Password is required.
+            </div>
+            <div *ngIf="loginForm.controls.password!.errors?.['minlength']">
+              Name must be at least 3 characters long.
+            </div>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="block__item">
+        <mat-checkbox formControlName="rememberMe" class="example-margin">remember me</mat-checkbox>
+      </div>
     </div>
     <div class="wrap-btn">
-      <button type="submit" [disabled]="loginForm.invalid" mat-raised-button color="accent">
+      <button type="submit" [disabled]="loginForm.invalid" mat-raised-button color="primary">
         sing in
       </button>
     </div>
