@@ -17,10 +17,33 @@
 		padding: 0;
 	}
 
+  &__status {
+    margin-top: 15px;
+  }
+
 	&__content {
 		width: 100%;
 		margin-left: 20px;
 	}
+
+  &__subTitle {
+    font-size: 18px;
+  }
+
+  &__wrap {
+    padding-left: 10px;
+    border-top: 1px solid gray;
+    padding-bottom: 5px;
+  }
+
+  &__item {
+    margin-top: 5px;
+  }
+
+  &__linkTitle {
+    margin-top: 20px;
+    font-size: 16px;
+  }
 }
 
 

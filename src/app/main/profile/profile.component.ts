@@ -11,10 +11,12 @@ import { AuthService } from '../../core/services/auth.service'
 export class ProfileComponent implements OnInit {
   userId$: Observable<string>
   profile$: Observable<ProfileData>
+  imgDefault: string
 
   constructor(private profileService: ProfileService, private authService: AuthService) {
     this.userId$ = this.authService.userId$
     this.profile$ = this.profileService.profile$
+    this.imgDefault = 'assets/img/default.jpg'
   }
 
   ngOnInit() {

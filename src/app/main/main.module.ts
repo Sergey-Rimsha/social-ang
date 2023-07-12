@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
+import { CommonModule, NgOptimizedImage } from '@angular/common'
 import { ProfileComponent } from './profile/profile.component'
 import { MainRoutingModule } from './main-routing.module'
 import { MainComponent } from './main.component'
@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card'
     MatListModule,
     MatButtonModule,
     MatCardModule,
+    NgOptimizedImage,
   ],
 })
 export class MainModule {}
