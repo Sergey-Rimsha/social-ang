@@ -13,7 +13,7 @@ export interface ProfileData {
   photos: Photos
 }
 
-interface Contacts {
+export interface Contacts {
   facebook: string
   website: string
   vk: string
@@ -56,13 +56,21 @@ const rootObject: ProfileData = {
 })
 export class ProfileService {
   profile$: BehaviorSubject<ProfileData> = new BehaviorSubject<ProfileData>(rootObject)
+  status$: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>('')
 
   constructor(private http: HttpClient) {}
 
   getProfile(userId: string) {
     this.http.get<ProfileData>(`${environment.baseUrl}/profile/${userId}`).subscribe(res => {
-      console.log(res)
       this.profile$.next(res)
     })
+  }
+
+  getProfileStatus(userId: string) {
+    this.http
+      .get<string | undefined>(`${environment.baseUrl}/profile/status/${userId}`)
+      .subscribe(res => {
+        this.status$.next(res)
+      })
   }
 }

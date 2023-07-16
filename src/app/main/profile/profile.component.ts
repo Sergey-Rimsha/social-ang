@@ -11,17 +11,20 @@ import { AuthService } from '../../core/services/auth.service'
 export class ProfileComponent implements OnInit {
   userId$: Observable<string>
   profile$: Observable<ProfileData>
+  status$: Observable<string | undefined>
   imgDefault: string
 
   constructor(private profileService: ProfileService, private authService: AuthService) {
     this.userId$ = this.authService.userId$
     this.profile$ = this.profileService.profile$
+    this.status$ = this.profileService.status$
     this.imgDefault = 'assets/img/default.jpg'
   }
 
   ngOnInit() {
     this.userId$.subscribe(userId => {
       this.profileService.getProfile(userId)
+      this.profileService.getProfileStatus(userId)
     })
   }
 }
