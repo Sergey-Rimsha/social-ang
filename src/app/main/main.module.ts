@@ -9,6 +9,8 @@ import { MatButtonModule } from '@angular/material/button'
 import { HeaderComponent } from './components/header/header.component'
 import { MenuComponent } from './components/menu/menu.component'
 import { MatCardModule } from '@angular/material/card'
+import { MatInputModule } from '@angular/material/input'
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [ProfileComponent, MainComponent, HeaderComponent, MenuComponent],
@@ -20,6 +22,8 @@ import { MatCardModule } from '@angular/material/card'
     MatButtonModule,
     MatCardModule,
     NgOptimizedImage,
+    MatInputModule,
+    FormsModule,
   ],
 })
 export class MainModule {}

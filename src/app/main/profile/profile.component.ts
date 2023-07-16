@@ -9,16 +9,28 @@ import { AuthService } from '../../core/services/auth.service'
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  userId$: Observable<string>
+  userId$: Observable<number>
   profile$: Observable<ProfileData>
   status$: Observable<string | undefined>
   imgDefault: string
+  editeStatus: boolean = false
+
+  newStatus!: string
 
   constructor(private profileService: ProfileService, private authService: AuthService) {
     this.userId$ = this.authService.userId$
     this.profile$ = this.profileService.profile$
     this.status$ = this.profileService.status$
     this.imgDefault = 'assets/img/default.jpg'
+  }
+
+  saveStatus() {
+    this.editeStatus = false
+    this.profileService.putProfileStatus(this.newStatus)
+  }
+
+  onEditeStatus() {
+    this.editeStatus = !this.editeStatus
   }
 
   ngOnInit() {

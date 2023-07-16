@@ -15,7 +15,7 @@ interface ResponseAuthLogin<T> {
 
 interface MeResponseData {
   email: string
-  id: string
+  id: number
   login: string
 }
 
@@ -24,7 +24,7 @@ interface MeResponseData {
 })
 export class AuthService {
   isAuth = false
-  userId$: BehaviorSubject<string> = new BehaviorSubject<string>('')
+  userId$: BehaviorSubject<number> = new BehaviorSubject<number>(0)
 
   resolveAuthRequest: Function = () => {}
   authRequest = new Promise(resolve => {

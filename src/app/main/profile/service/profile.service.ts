@@ -60,17 +60,25 @@ export class ProfileService {
 
   constructor(private http: HttpClient) {}
 
-  getProfile(userId: string) {
+  getProfile(userId: number) {
     this.http.get<ProfileData>(`${environment.baseUrl}/profile/${userId}`).subscribe(res => {
       this.profile$.next(res)
     })
   }
 
-  getProfileStatus(userId: string) {
+  getProfileStatus(userId: number) {
     this.http
       .get<string | undefined>(`${environment.baseUrl}/profile/status/${userId}`)
       .subscribe(res => {
         this.status$.next(res)
       })
+  }
+
+  putProfileStatus(status: string) {
+    const { userId } = this.profile$.getValue()
+
+    this.http.put(`${environment.baseUrl}/profile/status`, { status }).subscribe(() => {
+      this.getProfileStatus(userId)
+    })
   }
 }
