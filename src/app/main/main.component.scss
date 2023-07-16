@@ -1,23 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
 
 .page {
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
+  height: 100%;
 }
-
-
 
 .main {
-	display: flex;
+  display: flex;
 	width: 900px;
-  height: 100%;
+  flex-grow: 1;
   margin: 20px auto 0;
+
+  @media screen and (width <= 900px){
+    width: 100%;
+  }
 }
 
-
 .content {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 	box-shadow: 0 0 8px 0 rgb(34 60 80 / 20%);
 	border-radius: 5px;
 	margin-left: 15px;

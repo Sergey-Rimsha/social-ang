@@ -2,32 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { environment } from '../../../../environments/environments'
 import { BehaviorSubject } from 'rxjs'
-
-export interface ProfileData {
-  aboutMe: string
-  contacts: Contacts
-  lookingForAJob: boolean
-  lookingForAJobDescription: string
-  fullName: string
-  userId: number
-  photos: Photos
-}
-
-export interface Contacts {
-  facebook: string
-  website: string
-  vk: string
-  twitter: string
-  instagram: string
-  youtube: string
-  github: string
-  mainLink: string
-}
-
-export interface Photos {
-  small: string
-  large: string
-}
+import { ProfileData } from '../models/profile.models'
 
 const rootObject: ProfileData = {
   aboutMe: '',

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core'
-import { ProfileData, ProfileService } from './service/profile.service'
+import { ProfileService } from './service/profile.service'
 import { Observable } from 'rxjs'
 import { AuthService } from '../../core/services/auth.service'
+import { ProfileData } from './models/profile.models'
 
 @Component({
   selector: 'soc-profile',

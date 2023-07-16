@@ -5,19 +5,7 @@ import { Injectable } from '@angular/core'
 import { ResultCodeEnum } from '../enums/resultCode'
 import { Path } from '../enums/path'
 import { BehaviorSubject } from 'rxjs'
-
-interface ResponseAuthLogin<T> {
-  data: T
-  message: string[]
-  fieldsErrors: []
-  resultCode: number
-}
-
-interface MeResponseData {
-  email: string
-  id: number
-  login: string
-}
+import { MeData, ResponseAuthLogin } from '../models/auth.models'
 
 @Injectable({
   providedIn: 'root',
@@ -45,15 +33,13 @@ export class AuthService {
   }
 
   me() {
-    this.http
-      .get<ResponseAuthLogin<MeResponseData>>(`${environment.baseUrl}/auth/me`)
-      .subscribe(res => {
-        if (res.resultCode === ResultCodeEnum.success) {
-          this.isAuth = true
-          this.userId$.next(res.data.id)
-        }
-        this.resolveAuthRequest()
-      })
+    this.http.get<ResponseAuthLogin<MeData>>(`${environment.baseUrl}/auth/me`).subscribe(res => {
+      if (res.resultCode === ResultCodeEnum.success) {
+        this.isAuth = true
+        this.userId$.next(res.data.id)
+      }
+      this.resolveAuthRequest()
+    })
   }
 
   logout() {
