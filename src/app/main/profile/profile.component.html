@@ -16,27 +16,25 @@
     </mat-form-field>
     <mat-card class="example-card">
       <img
+        [src]="profile.photos.large"
         mat-card-image
         *ngIf="profile.photos.large"
-        ngSrc="{{ profile.photos.large }}"
         alt="user Photo"
         width="250"
         height="250"
-        priority
       />
       <img
         mat-card-image
         *ngIf="!profile.photos.large"
-        ngSrc="{{ imgDefault }}"
+        [src]="imgDefault"
         width="250"
         height="250"
         alt="user Photo"
-        priority
       />
     </mat-card>
     <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
+      <input (change)="updateProfilePhoto($event)" type="file" accept="*/*" />
+      <button mat-raised-button (click)="uploadedProfilePhoto()">update photo</button>
     </mat-card-actions>
   </div>
   <div class="profile__content" *ngIf="profile$ | async as profile">

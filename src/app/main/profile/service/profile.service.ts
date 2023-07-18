@@ -4,6 +4,13 @@ import { environment } from '../../../../environments/environments'
 import { BehaviorSubject } from 'rxjs'
 import { ProfileData } from '../models/profile.models'
 
+export interface ResponseType<T> {
+  data: T
+  resultCode: number
+  messages: string[]
+  fieldsErrors: string[]
+}
+
 const rootObject: ProfileData = {
   aboutMe: '',
   contacts: {
@@ -55,5 +62,27 @@ export class ProfileService {
     this.http.put(`${environment.baseUrl}/profile/status`, { status }).subscribe(() => {
       this.getProfileStatus(userId)
     })
+  }
+
+  putProfilePhoto(image: File) {
+    const formData = new FormData()
+    formData.append('image', image)
+    this.http
+      .put<ResponseType<{ photos: { small: string; large: string } }>>(
+        `${environment.baseUrl}/profile/photo`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      )
+      .subscribe(res => {
+        if (res.resultCode === 0) {
+          let profile = this.profile$.getValue()
+          profile = { ...profile, ...res.data }
+          this.profile$.next(profile)
+        }
+      })
   }
 }

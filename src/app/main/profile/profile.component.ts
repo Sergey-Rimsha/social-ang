@@ -16,6 +16,8 @@ export class ProfileComponent implements OnInit {
   imgDefault: string
   editeStatus: boolean = false
 
+  newImage!: File
+
   newStatus!: string
 
   constructor(private profileService: ProfileService, private authService: AuthService) {
@@ -34,7 +36,19 @@ export class ProfileComponent implements OnInit {
     this.editeStatus = !this.editeStatus
   }
 
+  updateProfilePhoto(event: Event) {
+    const inputElement = event.target as HTMLInputElement
+    if (inputElement && inputElement.files) {
+      this.newImage = inputElement.files[0]
+    }
+  }
+
+  uploadedProfilePhoto() {
+    this.profileService.putProfilePhoto(this.newImage)
+  }
+
   ngOnInit() {
+    console.log(this.profile$)
     this.userId$.subscribe(userId => {
       this.profileService.getProfile(userId)
       this.profileService.getProfileStatus(userId)
