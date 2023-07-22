@@ -3,6 +3,9 @@ import { UsersService } from '../../services/users.service'
 import { Observable } from 'rxjs'
 import { MatPaginator, PageEvent } from '@angular/material/paginator'
 import { User } from '../../models/auth.models'
+import { Router } from '@angular/router'
+import { Path } from '../../../../core/enums/path'
+
 @Component({
   selector: 'soc-users',
   templateUrl: './users.component.html',
@@ -14,7 +17,7 @@ export class UsersComponent implements OnInit {
   totalCount$: Observable<number>
   imgDefault: string
 
-  constructor(private userService: UsersService) {
+  constructor(private userService: UsersService, private router: Router) {
     this.users$ = this.userService.users$
     this.totalCount$ = this.userService.totalCount$
     this.imgDefault = 'assets/img/default.jpg'
@@ -35,6 +38,10 @@ export class UsersComponent implements OnInit {
 
   unfollowUser(userId: number) {
     this.userService.unfollowUser(userId)
+  }
+
+  showProfileUser(userId: number) {
+    this.router.navigate([Path.profile, userId])
   }
 
   ngOnInit() {

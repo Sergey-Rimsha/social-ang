@@ -1,21 +1,23 @@
 <section class="users">
   <ng-container *ngFor="let user of users$ | async">
     <mat-card>
-      <img
-        *ngIf="!user.photos.small"
-        ngSrc="{{ imgDefault }}"
-        alt="User Avatar"
-        height="42"
-        width="42"
-        priority
-      />
-      <img
-        *ngIf="user.photos.small"
-        ngSrc="{{ user.photos.small }}"
-        alt="User Avatar"
-        height="42"
-        width="42"
-      />
+      <div (click)="showProfileUser(user.id)">
+        <img
+          *ngIf="!user.photos.small"
+          ngSrc="{{ imgDefault }}"
+          alt="User Avatar"
+          height="42"
+          width="42"
+          priority
+        />
+        <img
+          *ngIf="user.photos.small"
+          ngSrc="{{ user.photos.small }}"
+          alt="User Avatar"
+          height="42"
+          width="42"
+        />
+      </div>
       <mat-card-content>
         <p>{{ user.name }}</p>
         <p>status:{{ user.status }}</p>

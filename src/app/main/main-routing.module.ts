@@ -11,6 +11,7 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       { path: Path.profile, component: ProfileComponent, pathMatch: 'full' },
+      { path: `${Path.profile}/:userId`, component: ProfileComponent, pathMatch: 'full' },
       {
         path: Path.users,
         loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
