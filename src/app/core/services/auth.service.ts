@@ -23,10 +23,11 @@ export class AuthService {
 
   login(data: Partial<{ email: string; password: string; rememberMe: boolean }>) {
     this.http
-      .post<ResponseAuthLogin<{}>>(`${environment.baseUrl}/auth/login`, data)
+      .post<ResponseAuthLogin<{ userId: number }>>(`${environment.baseUrl}/auth/login`, data)
       .subscribe(res => {
         if (res.resultCode === ResultCodeEnum.success) {
           this.isAuth = true
+          this.userId$.next(res.data.userId)
           this.router.navigate(['/'])
         }
       })
