@@ -11,9 +11,16 @@ import { MenuComponent } from './components/menu/menu.component'
 import { MatCardModule } from '@angular/material/card'
 import { MatInputModule } from '@angular/material/input'
 import { FormsModule } from '@angular/forms'
+import { ProfileStatusComponent } from './profile/components/profile-status/profile-status.component'
 
 @NgModule({
-  declarations: [ProfileComponent, MainComponent, HeaderComponent, MenuComponent],
+  declarations: [
+    ProfileComponent,
+    MainComponent,
+    HeaderComponent,
+    MenuComponent,
+    ProfileStatusComponent,
+  ],
   imports: [
     CommonModule,
     MainRoutingModule,

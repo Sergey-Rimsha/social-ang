@@ -1,19 +1,10 @@
 <div class="profile">
   <div class="profile__block" *ngIf="profile$ | async as profile">
     <h2 class="profile__title">{{ profile.fullName }}</h2>
-    <span *ngIf="!editeStatus" (dblclick)="onEditeStatus()" class="profile__status">{{
-      status$ ? (status$ | async) : 'status:'
-    }}</span>
-    <mat-form-field *ngIf="editeStatus" class="example-full-width">
-      <mat-label>change status</mat-label>
-      <input
-        matInput
-        (blur)="saveStatus()"
-        [(ngModel)]="newStatus"
-        placeholder="change status"
-        value="{{ status$ | async }}"
-      />
-    </mat-form-field>
+    <soc-profile-status
+      (statusUpdated)="saveStatus($event)"
+      status="{{ status$ | async }}"
+    ></soc-profile-status>
     <mat-card class="example-card">
       <img
         [src]="profile.photos.large"

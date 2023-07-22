@@ -15,11 +15,8 @@ export class ProfileComponent implements OnInit {
   profile$: Observable<ProfileData>
   status$: Observable<string | undefined>
   imgDefault: string
-  editeStatus: boolean = false
 
   newImage!: File
-
-  newStatus!: string
 
   constructor(
     private profileService: ProfileService,
@@ -32,15 +29,6 @@ export class ProfileComponent implements OnInit {
     this.imgDefault = 'assets/img/default.jpg'
   }
 
-  saveStatus() {
-    this.editeStatus = false
-    this.profileService.putProfileStatus(this.newStatus)
-  }
-
-  onEditeStatus() {
-    this.editeStatus = !this.editeStatus
-  }
-
   updateProfilePhoto(event: Event) {
     const inputElement = event.target as HTMLInputElement
     if (inputElement && inputElement.files) {
@@ -50,6 +38,10 @@ export class ProfileComponent implements OnInit {
 
   uploadedProfilePhoto() {
     this.profileService.putProfilePhoto(this.newImage)
+  }
+
+  saveStatus(newStatus: string) {
+    this.profileService.putProfileStatus(newStatus)
   }
 
   ngOnInit() {

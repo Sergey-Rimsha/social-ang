@@ -1,0 +1,10 @@
+<div class="status" (dblclick)="onChangeEditeMode()">
+  <span *ngIf="!onEditeMode" class="status__item">{{ status || 'change status:' }}</span>
+  <input
+    class="status__input"
+    *ngIf="onEditeMode"
+    [(ngModel)]="newStatus"
+    (blur)="saveStatus()"
+    placeholder="{{ status }}"
+  />
+</div>
