@@ -2,8 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core'
 import { UsersService } from '../../services/users.service'
 import { Observable } from 'rxjs'
 import { MatPaginator, PageEvent } from '@angular/material/paginator'
-import { User } from '../../interface/user'
-
+import { User } from '../../models/auth.models'
 @Component({
   selector: 'soc-users',
   templateUrl: './users.component.html',
