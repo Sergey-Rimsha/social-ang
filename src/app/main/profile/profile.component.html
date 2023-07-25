@@ -5,28 +5,10 @@
       (statusUpdated)="saveStatus($event)"
       status="{{ status$ | async }}"
     ></soc-profile-status>
-    <mat-card class="example-card">
-      <img
-        [src]="profile.photos.large"
-        mat-card-image
-        *ngIf="profile.photos.large"
-        alt="user Photo"
-        width="250"
-        height="250"
-      />
-      <img
-        mat-card-image
-        *ngIf="!profile.photos.large"
-        [src]="imgDefault"
-        width="250"
-        height="250"
-        alt="user Photo"
-      />
-    </mat-card>
-    <mat-card-actions>
-      <input (change)="updateProfilePhoto($event)" type="file" accept="*/*" />
-      <button mat-raised-button (click)="uploadedProfilePhoto()">update photo</button>
-    </mat-card-actions>
+    <soc-profile-photo
+      (uploadedPhoto)="uploadedProfilePhoto($event)"
+      photo="{{ profile.photos.large }}"
+    ></soc-profile-photo>
   </div>
   <div class="profile__content" *ngIf="profile$ | async as profile">
     <h3 class="profile__subTitle">User Info</h3>

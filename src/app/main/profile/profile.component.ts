@@ -14,9 +14,6 @@ export class ProfileComponent implements OnInit {
   userId$: Observable<number>
   profile$: Observable<ProfileData>
   status$: Observable<string | undefined>
-  imgDefault: string
-
-  newImage!: File
 
   constructor(
     private profileService: ProfileService,
@@ -26,18 +23,10 @@ export class ProfileComponent implements OnInit {
     this.userId$ = this.authService.userId$
     this.profile$ = this.profileService.profile$
     this.status$ = this.profileService.status$
-    this.imgDefault = 'assets/img/default.jpg'
   }
 
-  updateProfilePhoto(event: Event) {
-    const inputElement = event.target as HTMLInputElement
-    if (inputElement && inputElement.files) {
-      this.newImage = inputElement.files[0]
-    }
-  }
-
-  uploadedProfilePhoto() {
-    this.profileService.putProfilePhoto(this.newImage)
+  uploadedProfilePhoto(newPhoto: File) {
+    this.profileService.putProfilePhoto(newPhoto)
   }
 
   saveStatus(newStatus: string) {

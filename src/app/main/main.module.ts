@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card'
 import { MatInputModule } from '@angular/material/input'
 import { FormsModule } from '@angular/forms'
 import { ProfileStatusComponent } from './profile/components/profile-status/profile-status.component'
+import { ProfilePhotoComponent } from './profile/components/profile-photo/profile-photo.component'
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ProfileStatusComponent } from './profile/components/profile-status/prof
     HeaderComponent,
     MenuComponent,
     ProfileStatusComponent,
+    ProfilePhotoComponent,
   ],
   imports: [
     CommonModule,
