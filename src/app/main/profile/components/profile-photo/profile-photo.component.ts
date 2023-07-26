@@ -7,10 +7,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
 })
 export class ProfilePhotoComponent {
   @Input() photo!: string | undefined
+  @Input() changeMode!: boolean
+  @Output() uploadedPhoto: EventEmitter<File> = new EventEmitter()
+
   imgDefault: string
   newPhoto!: File
-
-  @Output() uploadedPhoto: EventEmitter<File> = new EventEmitter()
 
   constructor() {
     this.imgDefault = 'assets/img/default.jpg'

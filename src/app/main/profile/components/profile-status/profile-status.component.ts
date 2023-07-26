@@ -7,13 +7,16 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
 })
 export class ProfileStatusComponent {
   @Input() status!: string
+  @Input() changeMode!: boolean
+  @Output() statusUpdated: EventEmitter<string> = new EventEmitter()
+
   newStatus: string = this.status
   onEditeMode: boolean = false
 
-  @Output() statusUpdated: EventEmitter<string> = new EventEmitter()
-
   onChangeEditeMode() {
-    this.onEditeMode = true
+    if (this.changeMode) {
+      this.onEditeMode = true
+    }
   }
 
   saveStatus() {

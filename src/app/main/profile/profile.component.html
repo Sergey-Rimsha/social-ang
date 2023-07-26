@@ -4,10 +4,12 @@
     <soc-profile-status
       (statusUpdated)="saveStatus($event)"
       status="{{ status$ | async }}"
+      [changeMode]="changeMode"
     ></soc-profile-status>
     <soc-profile-photo
       (uploadedPhoto)="uploadedProfilePhoto($event)"
       photo="{{ profile.photos.large }}"
+      [changeMode]="changeMode"
     ></soc-profile-photo>
   </div>
   <div class="profile__content" *ngIf="profile$ | async as profile">

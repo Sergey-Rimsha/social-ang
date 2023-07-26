@@ -2,7 +2,7 @@
   <img [src]="photo" mat-card-image *ngIf="photo" alt="user Photo" width="250" height="250" />
   <img mat-card-image *ngIf="!photo" [src]="imgDefault" width="250" height="250" alt="user Photo" />
 </mat-card>
-<div class="buttons">
+<div class="buttons" *ngIf="changeMode">
   <input (change)="updateProfilePhoto($event)" type="file" accept="*/*" />
   <button *ngIf="newPhoto" mat-raised-button (click)="uploadedProfilePhoto()">update photo</button>
 </div>

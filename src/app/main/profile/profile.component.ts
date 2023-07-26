@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   userId$: Observable<number>
   profile$: Observable<ProfileData>
   status$: Observable<string | undefined>
+  changeMode: boolean = true
 
   constructor(
     private profileService: ProfileService,
@@ -40,6 +41,7 @@ export class ProfileComponent implements OnInit {
       if (paramsUserId) {
         this.profileService.getProfile(+paramsUserId)
         this.profileService.getProfileStatus(+paramsUserId)
+        this.changeMode = false
       } else {
         this.userId$.subscribe(userId => {
           this.profileService.getProfile(userId)
